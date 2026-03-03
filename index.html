@@ -6,61 +6,43 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
   :root {
-    --dark:#0D1117;--mid:#161B22;--border:#30363D;--accent:#F7931A;
-    --bull:#00C853;--bull-bg:#0A2D14;--bull-hdr:#0A4A1A;
-    --base:#1565C0;--base-bg:#0A1F40;--base-hdr:#0D3B6B;
-    --bear:#EF5350;--bear-bg:#2D0A0A;--bear-hdr:#5A0A0A;
-    --warn:#FF6B35;--muted:#8B949E;--light:#E6EDF3;--white:#fff;
+    --dark:#0D1117;--border:#30363D;--accent:#F7931A;
+    --bull-hdr:#0A4A1A;--base-hdr:#0D3B6B;--bear-hdr:#5A0A0A;
+    --warn:#FF6B35;--muted:#8B949E;
     --sitrep-bg:#EBF2FF;--sitrep:#0D3B6B;
     --crypto-bg:#E0F2F1;--crypto:#1B3A4B;
-    --moss-bg:#F5F5F5;
+    --gray:#F5F5F5;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html,body{background:#fff;font-family:'Inter',-apple-system,sans-serif;font-size:11px;color:#111;width:210mm;margin:0 auto;}
   .page{width:210mm;min-height:297mm;padding:0 0 6mm;background:#fff;}
-
-  /* HEADER */
   .header{display:flex;justify-content:space-between;align-items:center;background:var(--dark);padding:8px 12px;border-bottom:2.5px solid var(--accent);}
   .header h1{font-size:15px;font-weight:700;color:#fff;letter-spacing:.3px;}
   .header .sub{font-size:7.5px;color:#888;margin-top:2px;}
   .header-right{text-align:right;}
   .header-right .date{font-size:9px;font-weight:700;color:var(--accent);}
   .header-right .conf{font-size:7px;color:#888;border:1px solid #555;padding:1px 5px;display:inline-block;margin-top:3px;letter-spacing:.5px;}
-
-  /* BODY PADDING */
   .body{padding:6px 10px 0;}
-
-  /* TOP ROW */
   .top-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:7px;}
   .card{border:1px solid var(--border);border-radius:3px;padding:7px 9px;}
   .card-title{font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;padding-bottom:4px;border-bottom:1px solid var(--border);}
   .card.sit{background:var(--sitrep-bg);}.card.sit .card-title{color:var(--sitrep);}
   .card.cry{background:var(--crypto-bg);}.card.cry .card-title{color:var(--crypto);}
-
   .bul{display:flex;gap:5px;margin-bottom:3px;font-size:9px;line-height:1.35;color:#222;}
   .bul .dot{flex-shrink:0;color:var(--accent);}
   .bul.warn{color:var(--warn);font-weight:600;}.bul.warn .dot{color:var(--warn);}
-
-  /* DIVIDER */
   .divider{border:none;border-top:1px solid var(--accent);margin:5px 0;opacity:.6;}
-
-  /* SECTION TITLE */
-  .sec-title{font-size:8px;font-weight:700;color:var(--accent);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;}
-  .sec-title.dark{color:#111;}
-
-  /* MARK MOSS TABLE */
-  .moss-table{width:100%;border-collapse:collapse;margin-bottom:7px;font-size:8.5px;}
-  .moss-table td{padding:5px 7px;vertical-align:top;border:1px solid #ccc;line-height:1.4;}
-  .moss-label{width:18%;font-weight:700;text-align:center;vertical-align:middle;font-size:8px;}
-  .moss-label.orange{background:#FFF8E1;color:var(--warn);}
-  .moss-label.green{background:#E8F5E9;color:#2E7D32;}
-  .moss-label.blue{background:#E3F2FD;color:var(--base);}
-  .moss-label.red{background:#FCE4EC;color:#B71C1C;}
-  .moss-content{background:var(--moss-bg);color:#222;}
-
-  /* SCENARIO TABLE */
-  .sec-table{width:100%;border-collapse:collapse;font-size:8px;}
-  .sec-table th,.sec-table td{padding:5px 6px;vertical-align:top;border:1px solid #ccc;line-height:1.35;}
+  .sec-title{font-size:8px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;color:var(--accent);}
+  .at{width:100%;border-collapse:collapse;margin-bottom:7px;font-size:8.5px;}
+  .at td{padding:5px 7px;vertical-align:top;border:1px solid #ccc;line-height:1.4;}
+  .al{width:18%;font-weight:700;text-align:center;vertical-align:middle;font-size:8px;}
+  .al.orange{background:#FFF8E1;color:var(--warn);}
+  .al.green{background:#E8F5E9;color:#2E7D32;}
+  .al.blue{background:#E3F2FD;color:#1565C0;}
+  .al.red{background:#FCE4EC;color:#B71C1C;}
+  .ac{background:var(--gray);color:#222;}
+  .st{width:100%;border-collapse:collapse;font-size:8px;}
+  .st th,.st td{padding:5px 6px;vertical-align:top;border:1px solid #ccc;line-height:1.35;}
   .th-blank{background:#111;width:10%;}
   .th-base{background:var(--base-hdr);color:#fff;text-align:center;width:30%;}
   .th-bull{background:var(--bull-hdr);color:#fff;text-align:center;width:30%;}
@@ -68,184 +50,150 @@
   .th-icon{font-size:12px;display:block;margin-bottom:1px;}
   .th-name{font-size:8.5px;font-weight:700;}
   .th-sub{font-size:7px;opacity:.8;margin-top:1px;}
-  .row-lbl{background:#1A1A2E;color:#fff;font-weight:700;font-size:7.5px;text-align:center;vertical-align:middle;letter-spacing:.3px;}
-  .cell-base{background:#E3F2FD;color:#0D1B2A;}
-  .cell-bull{background:#E8F5E9;color:#0A2D0A;}
-  .cell-bear{background:#FFEBEE;color:#2D0A0A;}
-  .sec-table td ul{list-style:none;padding:0;}
-  .sec-table td ul li{display:flex;gap:4px;margin-bottom:2px;font-size:8px;line-height:1.3;}
-  .cell-base ul li::before{content:"•";color:#1565C0;flex-shrink:0;}
-  .cell-bull ul li::before{content:"•";color:#2E7D32;flex-shrink:0;}
-  .cell-bear ul li::before{content:"•";color:#B71C1C;flex-shrink:0;}
-
-  /* FOOTER */
+  .rl{background:#1A1A2E;color:#fff;font-weight:700;font-size:7.5px;text-align:center;vertical-align:middle;letter-spacing:.3px;}
+  .cb{background:#E3F2FD;color:#0D1B2A;}
+  .cu{background:#E8F5E9;color:#0A2D0A;}
+  .cr{background:#FFEBEE;color:#2D0A0A;}
+  .st td ul{list-style:none;padding:0;}
+  .st td ul li{display:flex;gap:4px;margin-bottom:2px;font-size:8px;line-height:1.3;}
+  .cb ul li::before{content:"\2022";color:#1565C0;flex-shrink:0;}
+  .cu ul li::before{content:"\2022";color:#2E7D32;flex-shrink:0;}
+  .cr ul li::before{content:"\2022";color:#B71C1C;flex-shrink:0;}
   .footer{margin-top:5px;border-top:1px solid #ccc;padding-top:4px;font-size:6.5px;color:var(--muted);line-height:1.4;}
-
-  /* MOSS INTRO */
-  .moss-intro{font-size:8.5px;color:#555;font-style:italic;margin-bottom:6px;line-height:1.4;}
-
-  @media print{
-    html,body{width:210mm;}
-    .page{padding:0;}
-    @page{size:A4;margin:8mm 8mm 6mm;}
-  }
+  @media print{html,body{width:210mm;}.page{padding:0;}@page{size:A4;margin:8mm 8mm 6mm;}}
 </style>
 </head>
 <body>
 <div class="page">
-
   <div class="header">
     <div>
-      <h1>⚡ CRYPTO MARKETS &amp; IRAN WAR</h1>
-      <div class="sub">Real-time situation analysis &nbsp;·&nbsp; 2026 Scenario Framework &nbsp;·&nbsp; Aurora Infra Research</div>
+      <h1>&#9889; CRYPTO MARKETS &amp; IRAN WAR</h1>
+      <div class="sub">Real-time situation analysis &nbsp;&middot;&nbsp; 2026 Scenario Framework &nbsp;&middot;&nbsp; Protocol Labs</div>
     </div>
     <div class="header-right">
       <div class="date">MARCH 3, 2026</div>
       <div class="conf">CONFIDENTIAL</div>
     </div>
   </div>
-
   <div class="body">
-
-    <!-- TOP ROW -->
     <div class="top-row" style="margin-top:6px;">
-
       <div class="card sit">
-        <div class="card-title">⚔ Situation Update — Day 4</div>
-        <div class="bul"><span class="dot">•</span><span><b>Feb 28:</b> US + Israel launch <b>Operation Epic Fury / Roaring Lion</b> — coordinated regime-change strikes</span></div>
-        <div class="bul"><span class="dot">•</span><span><b>Khamenei killed.</b> Interim Leadership Council formed under Larijani (Mar 1)</span></div>
-        <div class="bul"><span class="dot">•</span><span>~2,000 strikes across 24 of Iran's 31 provinces; IRIB state broadcaster struck this morning</span></div>
-        <div class="bul warn"><span class="dot">•</span><span>Iran retaliating: missiles/drones at Israel, UAE, Qatar, Bahrain, Saudi Arabia, Jordan</span></div>
-        <div class="bul warn"><span class="dot">•</span><span><b>IRGC announces Strait of Hormuz closure</b> — oil +13% to USD 82/bbl (Jul 2024 highs)</span></div>
-        <div class="bul"><span class="dot">•</span><span>UAE markets closed; Qatar Airways grounded; Al Udeid struck; US Embassy Riyadh hit</span></div>
-        <div class="bul"><span class="dot">•</span><span>Death toll: ~787 Iran &nbsp;·&nbsp; 11 Israel &nbsp;·&nbsp; 6 US troops &nbsp;·&nbsp; 8 Gulf states</span></div>
-        <div class="bul warn"><span class="dot">•</span><span>Trump: war lasts <b>4–5 weeks</b>; ground troops "not ruled out." IAEA: no nuclear sites hit (yet)</span></div>
+        <div class="card-title">&#9876; Situation Update &mdash; Day 4</div>
+        <div class="bul"><span class="dot">&bull;</span><span><b>Feb 28:</b> US + Israel launch <b>Operation Epic Fury / Roaring Lion</b> &mdash; coordinated regime-change strikes</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span><b>Khamenei killed.</b> Interim Leadership Council formed under Larijani (Mar 1)</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span>~2,000 strikes across 24 of Iran's 31 provinces; IRIB state broadcaster struck this morning</span></div>
+        <div class="bul warn"><span class="dot">&bull;</span><span>Iran retaliating: missiles/drones at Israel, UAE, Qatar, Bahrain, Saudi Arabia, Jordan</span></div>
+        <div class="bul warn"><span class="dot">&bull;</span><span><b>IRGC announces Strait of Hormuz closure</b> &mdash; oil +13% to USD 82/bbl (Jul 2024 highs)</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span>UAE markets closed; Qatar Airways grounded; Al Udeid struck; US Embassy Riyadh hit</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span>Death toll: ~787 Iran &nbsp;&middot;&nbsp; 11 Israel &nbsp;&middot;&nbsp; 6 US troops &nbsp;&middot;&nbsp; 8 Gulf states</span></div>
+        <div class="bul warn"><span class="dot">&bull;</span><span>Trump: war lasts <b>4&ndash;5 weeks</b>; ground troops &ldquo;not ruled out.&rdquo; IAEA: no nuclear sites hit (yet)</span></div>
       </div>
-
       <div class="card cry">
-        <div class="card-title">₿ Crypto Snapshot (Mar 3, 2026)</div>
-        <div class="bul"><span class="dot">•</span><span><b>BTC ~USD 66,500</b> (+1.1% 24h) | Range USD 62K–70K since Feb 1; briefly touched USD 70K</span></div>
-        <div class="bul"><span class="dot">•</span><span><b>ETH ~USD 2,000</b> — deeply underperforming; Altcoin Season Index 35/100 (Bitcoin Season)</span></div>
-        <div class="bul"><span class="dot">•</span><span>~<b>USD 300M in long liquidations</b> on strike weekend; <b>no disorderly sell-off</b> — BTC outperformed S&amp;P and Nasdaq</span></div>
-        <div class="bul warn"><span class="dot">•</span><span><b>38% of altcoins near all-time lows</b> — worse than post-FTX 2022; biggest cycle drawdown</span></div>
-        <div class="bul"><span class="dot">•</span><span>BTC dominance 58.2% &nbsp;·&nbsp; Fear &amp; Greed: <b>Extreme Fear (10)</b> &nbsp;·&nbsp; Futures OI USD 93.8B</span></div>
-        <div class="bul"><span class="dot">•</span><span>Gold USD 5,300+ &nbsp;·&nbsp; Tokenized gold XAUT &gt;USD 5,400 (weekend price discovery vehicle)</span></div>
-        <div class="bul"><span class="dot">•</span><span>Iran's Nobitex (87% of Iran crypto volume) seeing surge in withdrawals</span></div>
-        <div class="bul warn"><span class="dot">•</span><span>March 18 Fed: <b>rate cut off the table</b> — hotter PPI + oil spike removes easing case</span></div>
+        <div class="card-title">&#8383; Crypto Snapshot (Mar 3, 2026)</div>
+        <div class="bul"><span class="dot">&bull;</span><span><b>BTC ~USD 66,500</b> (+1.1% 24h) | Range USD 62K&ndash;70K since Feb 1; briefly touched USD 70K</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span><b>ETH ~USD 2,000</b> &mdash; deeply underperforming; Altcoin Season Index 35/100 (Bitcoin Season)</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span>~<b>USD 300M in long liquidations</b> on strike weekend; <b>no disorderly sell-off</b> &mdash; BTC outperformed S&amp;P and Nasdaq</span></div>
+        <div class="bul warn"><span class="dot">&bull;</span><span><b>38% of altcoins near all-time lows</b> &mdash; worse than post-FTX 2022; biggest cycle drawdown</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span>BTC dominance 58.2% &nbsp;&middot;&nbsp; Fear &amp; Greed: <b>Extreme Fear (10)</b> &nbsp;&middot;&nbsp; Futures OI USD 93.8B</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span>Gold USD 5,300+ &nbsp;&middot;&nbsp; Tokenized gold XAUT &gt;USD 5,400 (weekend price discovery vehicle)</span></div>
+        <div class="bul"><span class="dot">&bull;</span><span>Iran's Nobitex (87% of Iran crypto volume) seeing surge in withdrawals</span></div>
+        <div class="bul warn"><span class="dot">&bull;</span><span>March 18 Fed: <b>rate cut off the table</b> &mdash; hotter PPI + oil spike removes easing case</span></div>
       </div>
-
     </div>
 
     <hr class="divider">
 
-    <!-- MARK MOSS -->
-    <div class="sec-title dark" style="color:#F7931A;">📺 MARK MOSS PERSPECTIVE — Bitcoin, War &amp; Macro Cycles</div>
-    <div class="moss-intro">Mark Moss (<b>The Mark Moss Show</b>, ~713K YouTube subscribers) has been one of the most consistent voices connecting geopolitical disruption to the Bitcoin thesis. His framework maps directly onto the current Iran conflict:</div>
-
-    <table class="moss-table">
+    <div class="sec-title">&#9670; Key Analytical Themes</div>
+    <table class="at">
       <tr>
-        <td class="moss-label orange">Geopolitical Chaos<br>=<br>Bitcoin Adoption</td>
-        <td class="moss-content">Moss argues every major conflict accelerates Bitcoin adoption by exposing the fragility of the permissioned financial system. When the US froze Russian reserves post-Ukraine, he warned: <i>"Three nuclear superpowers, and the world watched their bank accounts disappear."</i> Iran is the same playbook. Citizens and institutions in conflict zones will seek censorship-resistant assets. Bitcoin is the exit ramp from a burning building. The Nobitex withdrawal spike confirms this in real time.</td>
+        <td class="al orange">Geopolitical Chaos<br>=<br>Bitcoin Adoption</td>
+        <td class="ac">Every major conflict accelerates Bitcoin adoption by exposing the fragility of the permissioned financial system. When the US froze Russian reserves post-Ukraine, it demonstrated that even sovereign bank accounts can be seized overnight. Iran is the same playbook &mdash; citizens and institutions in conflict zones will seek censorship-resistant, seizure-proof assets. The Nobitex withdrawal spike (87% of Iran crypto volume) confirms this dynamic is already playing out in real time.</td>
       </tr>
       <tr>
-        <td class="moss-label green">The Three-Cycle<br>Convergence</td>
-        <td class="moss-content">Moss frames our era as the simultaneous convergence of a <b>250-year political revolution</b>, an <b>80-year financial reset</b>, and a <b>50-year technology cycle</b>. The Iran war is not random in this lens — it is part of the established order's last attempt to maintain control before decentralized systems render that control structurally impossible. War is historically the inflection point where hard money re-emerges. Sound assets outperform fiat. Bitcoin was built for this exact moment.</td>
+        <td class="al green">Three-Cycle<br>Convergence</td>
+        <td class="ac">We sit at the simultaneous convergence of a <b>250-year political revolution</b>, an <b>80-year financial reset</b>, and a <b>50-year technology cycle</b>. The Iran war is not a random event &mdash; it is part of the established order's attempt to maintain control before decentralized systems render that control structurally impossible. War is historically the inflection point where hard money re-emerges and sound assets outperform fiat. Bitcoin was architected for precisely this environment.</td>
       </tr>
       <tr>
-        <td class="moss-label blue">USD 5T Liquidity<br>Flood Thesis</td>
-        <td class="moss-content">Pre-war, Moss was tracking a <b>USD 5 trillion global liquidity wave</b> set to lift Bitcoin with a ~3-month lag. His central thesis: any major shock triggers Fed intervention and liquidity injection. War = inflation = money printing = hard asset appreciation. He expects BTC dips to be absorbed and reversed. The conflict could paradoxically accelerate the very liquidity conditions that validate the bull case — if it stays contained. Pre-war quote: <i>"Any liquidity crisis will be swiftly dealt with by the Fed."</i></td>
+        <td class="al blue">USD 5T Liquidity<br>Flood Thesis</td>
+        <td class="ac">A <b>USD 5 trillion global liquidity wave</b> was already building before the Iran conflict, with an estimated ~3-month lag before lifting risk assets. The critical insight: any major shock &mdash; including war &mdash; historically triggers Fed intervention and liquidity injection. War = inflation = money printing = hard asset appreciation. BTC dips are likely to be absorbed. The conflict could paradoxically accelerate the very liquidity conditions that validate the bull case, provided escalation stays contained.</td>
       </tr>
       <tr>
-        <td class="moss-label red">Key Risk:<br>Prolonged<br>Conflict</td>
-        <td class="moss-content">Moss has consistently stated that <i>"how much carnage between here and there"</i> is the real variable. If Hormuz stays closed, oil stays elevated, inflation re-accelerates, and the Fed is trapped between growth and price stability — that is the bear scenario. His consistent advice: <b>"Do not buy anything you would not hold for 10 years."</b> The structural Bitcoin thesis remains intact regardless of outcome. The question is only the path and how much volatility investors must endure to reach the destination.</td>
+        <td class="al red">Key Risk:<br>Prolonged<br>Conflict</td>
+        <td class="ac">The real variable is duration and escalation. If the Strait of Hormuz closure persists, oil stays elevated, inflation re-accelerates, and the Fed is trapped between fighting inflation and supporting growth &mdash; that is the bear scenario. The structural Bitcoin thesis remains intact regardless of outcome; this is a long-term conviction hold. The question is purely the <i>path</i> and how much volatility must be absorbed along the way. Hodl timeframe matters more than ever right now.</td>
       </tr>
     </table>
 
     <hr class="divider">
 
-    <!-- SCENARIO MATRIX -->
-    <div class="sec-title" style="margin-bottom:5px;">◈ 2026 SCENARIO MATRIX</div>
-
-    <table class="sec-table">
+    <div class="sec-title">&#9670; 2026 Scenario Matrix</div>
+    <table class="st">
       <thead>
         <tr>
           <th class="th-blank"></th>
-          <th class="th-base">
-            <span class="th-icon">📊</span>
-            <div class="th-name">BASE CASE</div>
-            <div class="th-sub">Most Likely</div>
-          </th>
-          <th class="th-bull">
-            <span class="th-icon">🚀</span>
-            <div class="th-name">BULL CASE</div>
-            <div class="th-sub">Probability Decreasing</div>
-          </th>
-          <th class="th-bear">
-            <span class="th-icon">💀</span>
-            <div class="th-name">BEAR CASE</div>
-            <div class="th-sub">Least Likely · Rising</div>
-          </th>
+          <th class="th-base"><span class="th-icon">&#128202;</span><div class="th-name">BASE CASE</div><div class="th-sub">Most Likely</div></th>
+          <th class="th-bull"><span class="th-icon">&#128640;</span><div class="th-name">BULL CASE</div><div class="th-sub">Probability Decreasing</div></th>
+          <th class="th-bear"><span class="th-icon">&#128128;</span><div class="th-name">BEAR CASE</div><div class="th-sub">Least Likely &middot; Rising</div></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="row-lbl">MACRO</td>
-          <td class="cell-base"><ul>
+          <td class="rl">MACRO</td>
+          <td class="cb"><ul>
             <li>Fed easing cycle; steady but slowing growth</li>
             <li>Elevated but manageable volatility</li>
             <li>Mid-terms pressure Washington to stabilise</li>
             <li>Iran war contained; oil spike temporary</li>
           </ul></td>
-          <td class="cell-bull"><ul>
+          <td class="cu"><ul>
             <li>Decisive Fed easing; new dovish Fed Chair</li>
             <li>Potential QE restart; strong growth + disinflation</li>
             <li>Volatility moderates; risk-on returns broadly</li>
             <li>War resolution sparks broad relief rally</li>
           </ul></td>
-          <td class="cell-bear"><ul>
+          <td class="cr"><ul>
             <li>No meaningful easing; persistent inflation + high vol</li>
-            <li><b>OR</b> — Recession + rising unemployment</li>
+            <li><b>OR</b> &mdash; Recession + rising unemployment</li>
             <li>Stagflation: Hormuz + energy shock + Fed trapped</li>
             <li>Dollar strengthens; liquidity drains from risk assets</li>
           </ul></td>
         </tr>
         <tr>
-          <td class="row-lbl">CRYPTO</td>
-          <td class="cell-base"><ul>
+          <td class="rl">CRYPTO</td>
+          <td class="cb"><ul>
             <li>BTC 4yr cycle turns toward bear; alts follow</li>
-            <li>Less severe than prior winters — ETF + institutional floor</li>
+            <li>Less severe than prior winters &mdash; ETF + institutional floor</li>
             <li>Slow but steady adoption progress</li>
             <li>BTC dominance stays high; alts bleed slowly</li>
           </ul></td>
-          <td class="cell-bull"><ul>
+          <td class="cu"><ul>
             <li>Bull cycle extends into 2026 on macro + war relief</li>
             <li>ETH adopted institutionally; stablecoin explosion</li>
-            <li>RWA tokenisation at scale — new ATHs possible</li>
+            <li>RWA tokenisation at scale &mdash; new ATHs possible</li>
             <li>Clarity Act + regulatory certainty unlocks capital</li>
           </ul></td>
-          <td class="cell-bear"><ul>
+          <td class="cr"><ul>
             <li>Sharp crash into crypto winter</li>
-            <li>BUIDL mode — wait for next cycle ☹</li>
+            <li>BUIDL mode &mdash; wait for next cycle &#9785;</li>
             <li>Altcoin near-total wipeout; sentiment capitulation</li>
             <li>ETF outflows; institutional exit; BTC below USD 50K</li>
           </ul></td>
         </tr>
         <tr>
-          <td class="row-lbl">GEO-POLITICAL WILDCARD</td>
-          <td class="cell-base"><ul>
-            <li>War lasts 2–4 weeks; contained to Iran</li>
+          <td class="rl">GEO-POLITICAL WILDCARD</td>
+          <td class="cb"><ul>
+            <li>War lasts 2&ndash;4 weeks; contained to Iran</li>
             <li>No major global economic impact</li>
             <li>Markets rally on ceasefire resolution</li>
             <li>Hormuz reopens quickly; oil normalises</li>
           </ul></td>
-          <td class="cell-bull"><ul>
+          <td class="cu"><ul>
             <li>Quick resolution; ceasefire + negotiated outcome</li>
             <li>Oil normalises rapidly; risk-on resumes</li>
             <li>Regime change creates long-term regional stability</li>
             <li>BTC benefits from safe-haven + Iran diaspora flows</li>
           </ul></td>
-          <td class="cell-bear"><ul>
-            <li>War escalates dramatically — regional expansion</li>
+          <td class="cr"><ul>
+            <li>War escalates dramatically &mdash; regional expansion</li>
             <li>Oil/gas soar; global inflation returns</li>
             <li>Gulf energy infrastructure severely disrupted</li>
             <li>Domino effect: global recession risk; WWIII fear</li>
@@ -255,7 +203,7 @@
     </table>
 
     <div class="footer">
-      <b>Sources:</b> CoinDesk · Al Jazeera
+      <b>Sources:</b> CoinDesk &middot; Al Jazeera &middot; Wikipedia (2026 Israeli&ndash;US Strikes on Iran) &middot; KuCoin Market Report &middot; CryptoQuant &middot; Coinpedia &middot; QCP Capital &mdash; March 3, 2026 &nbsp;|&nbsp; <b>Disclaimer:</b> For informational purposes only. Not financial advice. Protocol Labs. All rights reserved.
     </div>
 
   </div>
